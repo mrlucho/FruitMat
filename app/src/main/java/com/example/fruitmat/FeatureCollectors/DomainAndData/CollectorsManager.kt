@@ -6,4 +6,5 @@ interface CollectorsManager {
     fun addCollector(name: String)
     fun addHarvestedToCollector(position: Int,extraCages:Int,extraKg:Float)
 //    fun clearAllResources():Void
+//    fun generateActionReport() for logging user activity
 }
