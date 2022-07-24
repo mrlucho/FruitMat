@@ -16,4 +16,14 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorDto>) :Collec
     override fun addHarvestedToCollector(position: Int, extraCages: Int, extraKg: Float) {
         mColleectorsLst[position].add(extraCages,extraKg)
     }
+
+    override fun payOut(indexLst: ArrayList<Int>) {
+        if (indexLst.isEmpty()){
+            throw Exception("passing empty list to payout method is forbidden")
+        }
+        else{
+            val payments = ArrayList<Int>()
+
+        }
+    }
 }

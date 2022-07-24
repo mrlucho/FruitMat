@@ -1,38 +1,49 @@
 package com.example.fruitmat
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager2.widget.ViewPager2
-import com.example.fruitmat.common.adapters.ViewPagerAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.fruitmat.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(Home())
+
+        binding.bottomNavigationView.setOnItemSelectedListener {
+
+            when(it.itemId){
+
+                R.id.home -> replaceFragment(Home())
+                R.id.profile -> replaceFragment(Profile())
+                R.id.settings -> replaceFragment(Settings())
+
+                else ->{
 
 
-        val tabLayout=findViewById<TabLayout>(R.id.tab_layout)
-        val viewPager2=findViewById<ViewPager2>(R.id.view_pager_2)
 
-        val adapter= ViewPagerAdapter(supportFragmentManager,lifecycle)
-
-        viewPager2.adapter=adapter
-
-        TabLayoutMediator(tabLayout,viewPager2){tab,position->
-            when(position){
-                0->{
-                    tab.text="overview"
                 }
-                1->{
-                    tab.text="collectors"
-                }
-                2->{
-                    tab.text="Third"
-                }
+
             }
-        }.attach()
+
+            true
+
+        }
+
+
+    }
+
+    private fun replaceFragment(fragment : Fragment){
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout,fragment)
+        fragmentTransaction.commit()
 
 
     }
