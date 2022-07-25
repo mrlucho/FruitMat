@@ -56,8 +56,9 @@ class Profile : Fragment() {
 
         floatingActionButton = view.findViewById(R.id.fabAddCollector)
         floatingActionButton.setOnClickListener{
-            val case = UseCaseAddCollectorImpl()
-            case.itGetsIt()
+            val usecase = UseCaseAddCollectorImpl()
+            usecase.updateRecAdapter(recyclerView,manager)
+
         }
 
     }
