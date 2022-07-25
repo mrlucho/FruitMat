@@ -1,4 +1,4 @@
-package com.example.fruitmat
+package com.example.fruitmat.FeatureCollectors.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
