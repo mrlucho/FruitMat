@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
-import com.example.fruitmat.FeatureCollectors.DomainAndData.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
+import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
+import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.UseCaseAddCollector
+import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.UseCaseAddCollectorImpl
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +31,7 @@ class Profile : Fragment() {
     private var param2: String? = null
     private lateinit var adapter: RcAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var floatingActionButton: FloatingActionButton
     private var manager = CollectorsManagerImpl(ArrayList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,20 +39,27 @@ class Profile : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-//            mine
-
         }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(context)
         manager.fillWithDummyData()
+
         recyclerView = view.findViewById(R.id.recollect)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         adapter = RcAdapter(manager.getCollectorsAsArrayList())
         recyclerView.adapter = adapter
+
+        floatingActionButton = view.findViewById(R.id.fabAddCollector)
+        floatingActionButton.setOnClickListener{
+            val case = UseCaseAddCollectorImpl()
+            case.itGetsIt()
+        }
+
     }
 
     override fun onCreateView(

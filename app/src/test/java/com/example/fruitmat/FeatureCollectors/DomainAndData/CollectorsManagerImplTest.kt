@@ -1,5 +1,6 @@
 package com.example.fruitmat.FeatureCollectors.DomainAndData
 
+import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
 import org.junit.Test
 import junit.framework.TestCase.assertEquals
 

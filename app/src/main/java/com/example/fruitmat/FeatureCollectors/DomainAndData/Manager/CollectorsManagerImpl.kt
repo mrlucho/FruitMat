@@ -1,6 +1,8 @@
-package com.example.fruitmat.FeatureCollectors.DomainAndData
+package com.example.fruitmat.FeatureCollectors.DomainAndData.Manager
 
-class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorDto>) :CollectorsManager {
+import com.example.fruitmat.FeatureCollectors.DomainAndData.CollectorDto
+
+class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorDto>) : CollectorsManager {
     override fun getCollectorsAsArrayList(): ArrayList<CollectorDto> {
         return mColleectorsLst
     }
