@@ -12,6 +12,8 @@ class RcAdapter(private val collectorsLst:ArrayList<CollectorDto>):RecyclerView.
 
     class ReviewHolder(itemview:View):RecyclerView.ViewHolder(itemview){
         val tvname = itemview.findViewById<TextView>(R.id.tvHeading)
+        val tvcages = itemview.findViewById<TextView>(R.id.tvCages)
+//        val tvCages
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewHolder {
