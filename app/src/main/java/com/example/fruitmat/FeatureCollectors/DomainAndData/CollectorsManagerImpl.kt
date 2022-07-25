@@ -26,4 +26,11 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorDto>) :Collec
 
         }
     }
+
+    override fun fillWithDummyData() {
+        addCollector("someone")
+        addCollector("someoneOther")
+        addHarvestedToCollector(0,1,2.5f)
+        addHarvestedToCollector(1,1,0.5f)
+    }
 }

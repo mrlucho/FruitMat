@@ -43,9 +43,8 @@ class Profile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        manager.addCollector("someone")
-        manager.addCollector("someone other")
         val layoutManager = LinearLayoutManager(context)
+        manager.fillWithDummyData()
         recyclerView = view.findViewById(R.id.recollect)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)

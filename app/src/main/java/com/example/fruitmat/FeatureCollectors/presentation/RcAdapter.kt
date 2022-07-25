@@ -13,7 +13,7 @@ class RcAdapter(private val collectorsLst:ArrayList<CollectorDto>):RecyclerView.
     class ReviewHolder(itemview:View):RecyclerView.ViewHolder(itemview){
         val tvname = itemview.findViewById<TextView>(R.id.tvHeading)
         val tvcages = itemview.findViewById<TextView>(R.id.tvCages)
-//        val tvCages
+        val tvKg = itemview.findViewById<TextView>(R.id.tvkg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewHolder {
@@ -23,6 +23,8 @@ class RcAdapter(private val collectorsLst:ArrayList<CollectorDto>):RecyclerView.
 
     override fun onBindViewHolder(holder: ReviewHolder, position: Int) {
         holder.tvname.text = collectorsLst[position].name
+        holder.tvcages.text = collectorsLst[position].cages.toString()
+        holder.tvKg.text = collectorsLst[position].kilograms.toString()
     }
 
     override fun getItemCount(): Int {
