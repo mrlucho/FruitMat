@@ -9,26 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.UseCaseAddCollector
-import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.UseCaseAddCollectorImpl
+import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain.UseCaseAddCollectorImpl
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Profile.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Profile : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
     private lateinit var adapter: RcAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var floatingActionButton: FloatingActionButton
@@ -56,9 +46,8 @@ class Profile : Fragment() {
 
         floatingActionButton = view.findViewById(R.id.fabAddCollector)
         floatingActionButton.setOnClickListener{
-            val usecase = UseCaseAddCollectorImpl()
-            usecase.updateRecAdapter(recyclerView,manager)
-
+            var useCaseAddCollectorImpl = UseCaseAddCollectorImpl()
+            useCaseAddCollectorImpl.updateRecAdapter(recyclerView,manager)
         }
 
     }

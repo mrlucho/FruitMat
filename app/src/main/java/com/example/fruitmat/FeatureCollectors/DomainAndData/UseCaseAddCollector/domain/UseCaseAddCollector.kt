@@ -1,4 +1,4 @@
-package com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector
+package com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
@@ -10,6 +10,6 @@ interface UseCaseAddCollector
  * it has to adjust the recyclerview adapter
  */
 {
-    fun updateRecAdapter(recyclerView: RecyclerView,managerImpl: CollectorsManagerImpl){
-    }
+    fun updateRecAdapter(recyclerView: RecyclerView,managerImpl: CollectorsManagerImpl)
+//    fun cancelAddingNewCollectorBtnCancelPressed()
 }

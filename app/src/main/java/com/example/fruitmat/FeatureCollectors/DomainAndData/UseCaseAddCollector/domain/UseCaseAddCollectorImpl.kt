@@ -1,7 +1,8 @@
-package com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector
+package com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
+import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain.UseCaseAddCollector
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 
 
@@ -13,5 +14,9 @@ class UseCaseAddCollectorImpl : UseCaseAddCollector {
         managerImpl.addCollector("added by button")
         val adapter = RcAdapter(managerImpl.getCollectorsAsArrayList())
         recyclerView.adapter = adapter
+    }
+    fun popDialogView(){}
+    fun cancelAddingNewCollectorBtnCancelPressed(){
+
     }
 }
