@@ -1,5 +1,6 @@
 package com.example.fruitmat.FeatureCollectors.presentation
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsMa
 import com.example.fruitmat.FeatureCollectors.UseCaseAddCollected.UseCaseAddCollectedImpl
 import com.example.fruitmat.MainActivity
 
-class RcAdapter(private val managerImpl: CollectorsManagerImpl):RecyclerView.Adapter<RcAdapter.ReviewHolder>() {
+class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Context?):RecyclerView.Adapter<RcAdapter.ReviewHolder>() {
 
     class ReviewHolder(itemview:View):RecyclerView.ViewHolder(itemview){
         val tvname = itemview.findViewById<TextView>(R.id.tvHeading)
@@ -31,7 +32,7 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl):RecyclerView.Ada
         holder.tvcages.text = managerImpl.getCollector(position).cages.toString()
         holder.tvKg.text = managerImpl.getCollector(position).kilograms.toString()
         holder.btnAdd.setOnClickListener {
-            val useCase = UseCaseAddCollectedImpl(managerImpl,context = MainActivity())
+            val useCase = UseCaseAddCollectedImpl(managerImpl,context)
             useCase.trigger(position)
         }
     }

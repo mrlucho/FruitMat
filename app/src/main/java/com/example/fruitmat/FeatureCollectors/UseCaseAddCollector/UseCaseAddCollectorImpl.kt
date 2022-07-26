@@ -19,7 +19,7 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
 
     override fun updateRecAdapter(){
 //        create new adapter with bigger Collectors lst
-        val adapter = RcAdapter(managerImpl)
+        val adapter = RcAdapter(managerImpl,context)
         recyclerView.adapter = adapter
     }
     override fun popDialogView() {

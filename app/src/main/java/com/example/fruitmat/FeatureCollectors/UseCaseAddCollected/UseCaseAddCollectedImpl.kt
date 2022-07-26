@@ -12,21 +12,21 @@ import com.example.fruitmat.R
 
 class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context: Context?):UseCaseAddCollected {
     private lateinit var mDialogView: View
-    fun openDialogBox(){
+    fun openDialogBox():AlertDialog{
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collected,null)
         val builder = AlertDialog.Builder(context)
             .setView(mDialogView)
             .setTitle("col")
-        val mDialog = builder.show()
+        return  builder.show()
     }
     fun trigger(position:Int){
-        openDialogBox()
+        val mDialog = openDialogBox()
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
         btn.setOnClickListener {
             managerImpl.addHarvestedToCollector(position,cages.text.toString().toInt(),kg.text.toString().toFloat())
-
+            mDialog.dismiss()
         }
     }
 }
