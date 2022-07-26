@@ -27,18 +27,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.settings -> replaceFragment(Settings())
 
                 else ->{
-
-
-
                 }
-
             }
-
             true
-
         }
-
-
     }
 
     private fun replaceFragment(fragment : Fragment){
