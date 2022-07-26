@@ -10,6 +10,8 @@ interface UseCaseAddCollector
  * it has to adjust the recyclerview adapter
  */
 {
+    fun popDialogView()
     fun updateRecAdapter()
+    fun trigger()
 //    fun cancelAddingNewCollectorBtnCancelPressed()
 }

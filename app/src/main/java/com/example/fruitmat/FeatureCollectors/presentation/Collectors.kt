@@ -1,14 +1,10 @@
 package com.example.fruitmat.FeatureCollectors.presentation
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
@@ -48,39 +44,9 @@ class Profile(val manager: CollectorsManagerImpl) : Fragment() {
         recyclerView.adapter = adapter
 
         floatingActionButton = view.findViewById(R.id.fabAddCollector)
-
-
-
         floatingActionButton.setOnClickListener{
-//            val useCase = UseCaseAddCollectorImpl()
-//            useCase.updateRecAdapter(recyclerView,manager)
             val useCase = UseCaseAddCollectorImpl(manager,recyclerView,context)
-//            val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collector_dialog,null)
-            val mDialogView = useCase.popDialogView()
-
-            val builder = AlertDialog.Builder(context)
-                .setView(mDialogView)
-                .setTitle("EnterName")
-            val mDialog = builder.show()
-
-            val submitBtn = mDialogView.findViewById<Button>(R.id.submit)
-            val cancelBtn = mDialogView.findViewById<Button>(R.id.cancel)
-            val editText = mDialogView.findViewById<EditText>(R.id.etEnterCollectorsName)
-
-            submitBtn.setOnClickListener {
-                val txt = editText.text.toString()
-                mDialog.dismiss()
-//                Toast.makeText(context,txt,Toast.LENGTH_LONG).show()
-                manager.addCollector(txt)
-
-                useCase.updateRecAdapter()
-            }
-            cancelBtn.setOnClickListener {
-                mDialog.dismiss()
-            }
-
-
-            useCase.updateRecAdapter()
+            useCase.trigger()
         }
 
     }
