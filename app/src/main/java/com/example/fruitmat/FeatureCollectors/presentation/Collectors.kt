@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain.UseCaseAddCollectorImpl
+import com.example.fruitmat.FeatureCollectors.UseCaseAddCollector.UseCaseAddCollectorImpl
 import com.example.fruitmat.MainActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class Profile(val manager: CollectorsManagerImpl) : Fragment() {
+class Collectors(val manager: CollectorsManagerImpl) : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -68,7 +68,7 @@ class Profile(val manager: CollectorsManagerImpl) : Fragment() {
          */
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Profile(MainActivity().manager).apply {
+            Collectors(MainActivity().manager).apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

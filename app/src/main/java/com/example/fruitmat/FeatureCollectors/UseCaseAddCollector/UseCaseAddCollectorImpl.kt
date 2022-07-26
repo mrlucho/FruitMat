@@ -1,4 +1,4 @@
-package com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain
+package com.example.fruitmat.FeatureCollectors.UseCaseAddCollector
 
 import android.app.AlertDialog
 import android.content.Context
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain.UseCaseAddCollector
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.R
 
@@ -18,6 +18,7 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
     private lateinit var mDialogView:View
 
     override fun updateRecAdapter(){
+//        create new adapter with bigger Collectors lst
         val adapter = RcAdapter(managerImpl.getCollectorsAsArrayList())
         recyclerView.adapter = adapter
     }
@@ -38,16 +39,20 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
 
         submitBtn.setOnClickListener {
             val txt = editText.text.toString()
-            mDialog.dismiss()
-            managerImpl.addCollector(txt)
+            if (txt != ""){
+                mDialog.dismiss()
+                managerImpl.addCollector(txt)
 
-            updateRecAdapter()
+                updateRecAdapter()
+            }
+            else{
+                Toast.makeText(context,
+                    "Collector must have a name",Toast.LENGTH_SHORT).show()
+            }
+
         }
         cancelBtn.setOnClickListener {
             mDialog.dismiss()
         }
-
-
-        updateRecAdapter()
     }
 }

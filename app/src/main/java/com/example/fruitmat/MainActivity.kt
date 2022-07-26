@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.presentation.Profile
+import com.example.fruitmat.FeatureCollectors.presentation.Collectors
 import com.example.fruitmat.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
 
                 R.id.home -> replaceFragment(Home())
-                R.id.profile -> replaceFragment(Profile(manager))
+                R.id.profile -> replaceFragment(Collectors(manager))
                 R.id.settings -> replaceFragment(Settings())
 
                 else ->{
