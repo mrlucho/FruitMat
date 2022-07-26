@@ -10,6 +10,6 @@ interface UseCaseAddCollector
  * it has to adjust the recyclerview adapter
  */
 {
-    fun updateRecAdapter(recyclerView: RecyclerView,managerImpl: CollectorsManagerImpl)
+    fun updateRecAdapter()
 //    fun cancelAddingNewCollectorBtnCancelPressed()
 }

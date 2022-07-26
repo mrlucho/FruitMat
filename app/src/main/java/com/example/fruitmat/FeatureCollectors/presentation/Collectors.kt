@@ -40,7 +40,6 @@ class Profile(val manager: CollectorsManagerImpl) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(context)
-//        manager.fillWithDummyData()
 
         recyclerView = view.findViewById(R.id.recollect)
         recyclerView.layoutManager = layoutManager
@@ -50,36 +49,36 @@ class Profile(val manager: CollectorsManagerImpl) : Fragment() {
 
         floatingActionButton = view.findViewById(R.id.fabAddCollector)
         floatingActionButton.setOnClickListener{
-            val useCase = UseCaseAddCollectorImpl()
-            useCase.updateRecAdapter(recyclerView,manager)
+//            val useCase = UseCaseAddCollectorImpl()
+//            useCase.updateRecAdapter(recyclerView,manager)
+
+            val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collector_dialog,null)
+
+
+            val builder = AlertDialog.Builder(context)
+                .setView(mDialogView)
+                .setTitle("EnterName")
+            val mDialog = builder.show()
+
+            val submitBtn = mDialogView.findViewById<Button>(R.id.submit)
+            val cancelBtn = mDialogView.findViewById<Button>(R.id.cancel)
+            val editText = mDialogView.findViewById<EditText>(R.id.etEnterCollectorsName)
+            val useCase = UseCaseAddCollectorImpl(manager,recyclerView)
+            submitBtn.setOnClickListener {
+                val txt = editText.text.toString()
+                mDialog.dismiss()
+//                Toast.makeText(context,txt,Toast.LENGTH_LONG).show()
+                manager.addCollector(txt)
+
+                useCase.updateRecAdapter()
+            }
+            cancelBtn.setOnClickListener {
+                mDialog.dismiss()
+            }
+
+
+            useCase.updateRecAdapter()
         }
-//            var mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collector_dialog,null)
-//
-//
-//            val builder = AlertDialog.Builder(context)
-//                .setView(mDialogView)
-//                .setTitle("EnterName")
-//            val mDialog = builder.show()
-//
-//            val submitBtn = mDialogView.findViewById<Button>(R.id.submit)
-//            val cancelBtn = mDialogView.findViewById<Button>(R.id.cancel)
-//            val editText = mDialogView.findViewById<EditText>(R.id.etEnterCollectorsName)
-//            submitBtn.setOnClickListener {
-//                val txt = editText.text.toString()
-//                mDialog.dismiss()
-////                Toast.makeText(context,txt,Toast.LENGTH_LONG).show()
-//                manager.addCollector(txt)
-//                val useCase = UseCaseAddCollectorImpl()
-//                useCase.updateRecAdapter(recyclerView,manager)
-//            }
-//            cancelBtn.setOnClickListener {
-//                mDialog.dismiss()
-//            }
-//
-//
-////            var useCaseAddCollectorImpl = UseCaseAddCollectorImpl()
-////            useCaseAddCollectorImpl.updateRecAdapter(recyclerView,manager)
-//        }
 
     }
 
@@ -95,12 +94,9 @@ class Profile(val manager: CollectorsManagerImpl) : Fragment() {
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
+         * reopen the fragment, use manager from main activity
          * @return A new instance of fragment Profile.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Profile(MainActivity().manager).apply {
