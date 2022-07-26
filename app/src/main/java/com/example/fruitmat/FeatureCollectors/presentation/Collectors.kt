@@ -48,12 +48,15 @@ class Profile(val manager: CollectorsManagerImpl) : Fragment() {
         recyclerView.adapter = adapter
 
         floatingActionButton = view.findViewById(R.id.fabAddCollector)
+
+
+
         floatingActionButton.setOnClickListener{
 //            val useCase = UseCaseAddCollectorImpl()
 //            useCase.updateRecAdapter(recyclerView,manager)
-
-            val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collector_dialog,null)
-
+            val useCase = UseCaseAddCollectorImpl(manager,recyclerView,context)
+//            val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collector_dialog,null)
+            val mDialogView = useCase.popDialogView()
 
             val builder = AlertDialog.Builder(context)
                 .setView(mDialogView)
@@ -63,7 +66,7 @@ class Profile(val manager: CollectorsManagerImpl) : Fragment() {
             val submitBtn = mDialogView.findViewById<Button>(R.id.submit)
             val cancelBtn = mDialogView.findViewById<Button>(R.id.cancel)
             val editText = mDialogView.findViewById<EditText>(R.id.etEnterCollectorsName)
-            val useCase = UseCaseAddCollectorImpl(manager,recyclerView)
+
             submitBtn.setOnClickListener {
                 val txt = editText.text.toString()
                 mDialog.dismiss()
