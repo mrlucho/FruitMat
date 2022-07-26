@@ -19,6 +19,7 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
             .setTitle("col")
         return  builder.show()
     }
+
     fun trigger(position:Int){
         val mDialog = openDialogBox()
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
