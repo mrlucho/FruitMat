@@ -1,28 +1,32 @@
 package com.example.fruitmat.FeatureCollectors.presentation
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.DomainAndData.UseCaseAddCollector.domain.UseCaseAddCollectorImpl
+import com.example.fruitmat.MainActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class Profile : Fragment() {
+class Profile(val manager: CollectorsManagerImpl) : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
     private lateinit var adapter: RcAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var floatingActionButton: FloatingActionButton
-    private var manager = CollectorsManagerImpl(ArrayList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +40,7 @@ class Profile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(context)
-        manager.fillWithDummyData()
+//        manager.fillWithDummyData()
 
         recyclerView = view.findViewById(R.id.recollect)
         recyclerView.layoutManager = layoutManager
@@ -46,9 +50,36 @@ class Profile : Fragment() {
 
         floatingActionButton = view.findViewById(R.id.fabAddCollector)
         floatingActionButton.setOnClickListener{
-            var useCaseAddCollectorImpl = UseCaseAddCollectorImpl()
-            useCaseAddCollectorImpl.updateRecAdapter(recyclerView,manager)
+            val useCase = UseCaseAddCollectorImpl()
+            useCase.updateRecAdapter(recyclerView,manager)
         }
+//            var mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collector_dialog,null)
+//
+//
+//            val builder = AlertDialog.Builder(context)
+//                .setView(mDialogView)
+//                .setTitle("EnterName")
+//            val mDialog = builder.show()
+//
+//            val submitBtn = mDialogView.findViewById<Button>(R.id.submit)
+//            val cancelBtn = mDialogView.findViewById<Button>(R.id.cancel)
+//            val editText = mDialogView.findViewById<EditText>(R.id.etEnterCollectorsName)
+//            submitBtn.setOnClickListener {
+//                val txt = editText.text.toString()
+//                mDialog.dismiss()
+////                Toast.makeText(context,txt,Toast.LENGTH_LONG).show()
+//                manager.addCollector(txt)
+//                val useCase = UseCaseAddCollectorImpl()
+//                useCase.updateRecAdapter(recyclerView,manager)
+//            }
+//            cancelBtn.setOnClickListener {
+//                mDialog.dismiss()
+//            }
+//
+//
+////            var useCaseAddCollectorImpl = UseCaseAddCollectorImpl()
+////            useCaseAddCollectorImpl.updateRecAdapter(recyclerView,manager)
+//        }
 
     }
 
@@ -72,7 +103,7 @@ class Profile : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Profile().apply {
+            Profile(MainActivity().manager).apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
