@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/weight"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddCollected"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvkg"
         app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -48,8 +48,8 @@
 
     <TextView
         android:id="@+id/tvCages"
-        android:layout_width="40dp"
-        android:layout_height="75dp"
+        android:layout_width="30dp"
+        android:layout_height="67dp"
         android:text="7"
         android:textColor="@color/black"
         android:textSize="40sp"
@@ -62,8 +62,8 @@
 
     <TextView
         android:id="@+id/tvkg"
-        android:layout_width="45dp"
-        android:layout_height="65dp"
+        android:layout_width="23dp"
+        android:layout_height="52dp"
         android:text="1.7"
         android:textColor="@color/black"
         android:textSize="16dp"
@@ -84,4 +84,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnAddCollected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgCherry"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

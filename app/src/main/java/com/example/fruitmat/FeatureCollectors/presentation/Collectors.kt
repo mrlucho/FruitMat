@@ -40,7 +40,7 @@ class Collectors(val manager: CollectorsManagerImpl) : Fragment() {
         recyclerView = view.findViewById(R.id.recollect)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter = RcAdapter(manager.getCollectorsAsArrayList())
+        adapter = RcAdapter(manager)
         recyclerView.adapter = adapter
 
         floatingActionButton = view.findViewById(R.id.fabAddCollector)
