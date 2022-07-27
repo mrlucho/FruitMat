@@ -3,28 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="500dp">
 
-    <TextView
-        android:id="@+id/tvAddToCertainPerson"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="u shouldn't see it"
-        app:layout_constraintBottom_toTopOf="@+id/imgCage1"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etGiveCages"
         android:layout_width="102dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="100dp"
         android:ems="10"
         android:hint="cages"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnApplyAdding"
+        app:layout_constraintEnd_toStartOf="@+id/imgCage1"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="59dp" />
 
     <Button
         android:id="@+id/btnApplyAdding"
@@ -32,46 +24,42 @@
         android:layout_height="wrap_content"
         android:text="apply"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/etGiveKg"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etGiveCages"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddToCertainPerson"
-        app:layout_constraintVertical_bias="0.831" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCage1"
+        app:layout_constraintVertical_bias="0.083" />
 
     <EditText
         android:id="@+id/etGiveKg"
-        android:layout_width="118dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="58dp"
+        android:layout_height="45dp"
         android:ems="10"
         android:hint="kg"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgCage2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnApplyAdding"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddToCertainPerson"
-        app:layout_constraintVertical_bias="0.243" />
+        app:layout_constraintStart_toEndOf="@+id/imgCage1"
+        tools:layout_editor_absoluteY="59dp" />
 
     <ImageView
         android:id="@+id/imgCage1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/etGiveCages"
-        app:layout_constraintEnd_toStartOf="@+id/imgCage2"
+        app:layout_constraintEnd_toStartOf="@+id/etGiveKg"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddToCertainPerson"
-        app:srcCompat="@drawable/fruits" />
+        app:layout_constraintStart_toEndOf="@+id/etGiveCages"
+        app:srcCompat="@drawable/fruits"
+        tools:layout_editor_absoluteY="52dp" />
 
     <ImageView
         android:id="@+id/imgCage2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/etGiveKg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgCage1"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddToCertainPerson"
-        app:srcCompat="@drawable/weight" />
+        app:layout_constraintStart_toEndOf="@+id/etGiveKg"
+        app:srcCompat="@drawable/weight"
+        tools:layout_editor_absoluteY="52dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

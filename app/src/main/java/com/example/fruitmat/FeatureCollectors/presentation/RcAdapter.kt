@@ -4,15 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
-import com.example.fruitmat.FeatureCollectors.DomainAndData.CollectorDto
-import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
+import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.UseCaseAddCollected.UseCaseAddCollectedImpl
-import com.example.fruitmat.MainActivity
 
 class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Context?):RecyclerView.Adapter<RcAdapter.ReviewHolder>() {
 

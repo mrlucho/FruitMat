@@ -1,6 +1,7 @@
-package com.example.fruitmat.FeatureCollectors.DomainAndData
+package com.example.fruitmat.FeatureCollectors.Domain
 
-import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
+import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
+import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
 import org.junit.Test
 import junit.framework.TestCase.assertEquals
 
@@ -17,15 +18,15 @@ class CollectorsManagerImplTest {
         manager.addCollector("something")
         manager.addCollector("somethingOther")
 
-        assertEquals(manager.getCollector(0),CollectorDto("something",0,0f))
-        assertEquals(manager.getCollector(1),CollectorDto("somethingOther",0,0f))
+        assertEquals(manager.getCollector(0), CollectorDto("something",0,0f))
+        assertEquals(manager.getCollector(1), CollectorDto("somethingOther",0,0f))
     }
     @Test
     fun addHarvested(){
         val manager = CollectorsManagerImpl(ArrayList<CollectorDto>())
         manager.addCollector("something")
         manager.addHarvestedToCollector(0,2,1f)
-        assertEquals(manager.getCollector(0),CollectorDto("something",2,1f))
+        assertEquals(manager.getCollector(0), CollectorDto("something",2,1f))
     }
 
     @Test
@@ -33,6 +34,6 @@ class CollectorsManagerImplTest {
         val manager = CollectorsManagerImpl(ArrayList<CollectorDto>())
         manager.addCollector("something")
         manager.addHarvestedToCollector(0,2,7.5f)
-        assertEquals(manager.getCollector(0),CollectorDto("something",3,2.5f))
+        assertEquals(manager.getCollector(0), CollectorDto("something",3,2.5f))
     }
 }

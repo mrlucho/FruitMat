@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
+import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.R
 

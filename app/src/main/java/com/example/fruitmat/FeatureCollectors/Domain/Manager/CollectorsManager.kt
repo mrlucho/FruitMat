@@ -1,6 +1,6 @@
-package com.example.fruitmat.FeatureCollectors.DomainAndData.Manager
+package com.example.fruitmat.FeatureCollectors.Domain.Manager
 
-import com.example.fruitmat.FeatureCollectors.DomainAndData.CollectorDto
+import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
 
 interface CollectorsManager {
     fun getCollectorsAsArrayList():ArrayList<CollectorDto>

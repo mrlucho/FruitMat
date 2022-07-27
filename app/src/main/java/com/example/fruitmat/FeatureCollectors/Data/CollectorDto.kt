@@ -1,8 +1,8 @@
-package com.example.fruitmat.FeatureCollectors.DomainAndData
+package com.example.fruitmat.FeatureCollectors.Data
 
 import com.example.fruitmat.common.constants.Consts.cageCapacity
 
-data class CollectorDto(val name: String,var cages:Int,var kilograms:Float,var beforePayout: Boolean =true){
+data class CollectorDto(val name: String,var cages:Int,var kilograms:Float){
     fun validate(){
         if (kilograms >= cageCapacity){
             val extraCages = kilograms.div(cageCapacity).toInt()
