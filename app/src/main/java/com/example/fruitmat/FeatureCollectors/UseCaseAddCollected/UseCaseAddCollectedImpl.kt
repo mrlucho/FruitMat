@@ -33,19 +33,15 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
         btn.setOnClickListener {
-            var numCages:Int
-            try {
-                numCages = cages.text.toString().toInt()
+            val numCages:Int = try {
+                cages.text.toString().toInt()
+            } catch (e :Exception){
+                0
             }
-            catch (e :Exception){
-                numCages = 0
-            }
-            var numKg:Float
-            try {
-                numKg = kg.text.toString().toFloat()
-            }
-            catch (e :Exception){
-                numKg = 0f
+            val numKg:Float = try {
+                kg.text.toString().toFloat()
+            } catch (e :Exception){
+                0f
             }
             managerImpl.addHarvestedToCollector(position,numCages,numKg)
             holder.tvcages.text = managerImpl.getCollector(position).cages.toString()
