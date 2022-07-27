@@ -1,22 +1,26 @@
 package com.example.fruitmat.FeatureCollectors.Domain.Manager
 
 import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
+import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
+import java.time.LocalDateTime
 
-class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorDto>) : CollectorsManager {
-    override fun getCollectorsAsArrayList(): ArrayList<CollectorDto> {
+class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>) : CollectorsManager {
+    override fun getCollectorsAsArrayList(): ArrayList<CollectorWithHistory> {
         return mColleectorsLst
     }
 
-    override fun getCollector(position: Int): CollectorDto {
+    override fun getCollector(position: Int): CollectorWithHistory {
         return mColleectorsLst[position]
     }
 
     override fun addCollector(name: String) {
-        mColleectorsLst.add(CollectorDto(name,0,0f))
+        mColleectorsLst.add(CollectorWithHistory(CollectorDto(name,0,0f),
+            LocalDateTime.now(),
+            LocalDateTime.now(),0f))
     }
 
     override fun addHarvestedToCollector(position: Int, extraCages: Int, extraKg: Float) {
-        mColleectorsLst[position].add(extraCages,extraKg)
+        mColleectorsLst[position].collectorDto.add(extraCages,extraKg)
     }
 
     override fun payOut(indexLst: ArrayList<Int>) {

@@ -27,9 +27,9 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
         holder.itemView.setOnClickListener {
             UseCaseAddCollectedImpl(managerImpl,context,holder).trigger(position)
         }
-        holder.tvname.text = managerImpl.getCollector(position).name
-        holder.tvcages.text = managerImpl.getCollector(position).cages.toString()
-        holder.tvKg.text = managerImpl.getCollector(position).kilograms.toString()
+        holder.tvname.text = managerImpl.getCollector(position).collectorDto.name
+        holder.tvcages.text = managerImpl.getCollector(position).collectorDto.cages.toString()
+        holder.tvKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
 
     }
 

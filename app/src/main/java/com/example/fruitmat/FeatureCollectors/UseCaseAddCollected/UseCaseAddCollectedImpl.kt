@@ -17,7 +17,7 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collected,null)
         val builder = AlertDialog.Builder(context)
             .setView(mDialogView)
-            .setTitle(managerImpl.getCollector(position).name)
+            .setTitle(managerImpl.getCollector(position).collectorDto.name)
         return  builder.show()
     }
 
@@ -39,8 +39,8 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
                 0f
             }
             managerImpl.addHarvestedToCollector(position,numCages,numKg)
-            holder.tvcages.text = managerImpl.getCollector(position).cages.toString()
-            holder.tvKg.text = managerImpl.getCollector(position).kilograms.toString()
+            holder.tvcages.text = managerImpl.getCollector(position).collectorDto.cages.toString()
+            holder.tvKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
             mDialog.dismiss()
         }
     }
