@@ -35,10 +35,8 @@ class Collectors(val manager: CollectorsManagerImpl) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val layoutManager = LinearLayoutManager(context)
-
         recyclerView = view.findViewById(R.id.recollect)
-        recyclerView.layoutManager = layoutManager
+        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
         adapter = RcAdapter(manager,context)
         recyclerView.adapter = adapter

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
@@ -15,7 +16,7 @@ import java.lang.Exception
 
 class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context: Context?,val holder:RcAdapter.ReviewHolder):UseCaseAddCollected {
     private lateinit var mDialogView: View
-    fun openDialogBox():AlertDialog{
+    override fun openDialogBox():AlertDialog{
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collected,null)
         val builder = AlertDialog.Builder(context)
             .setView(mDialogView)
@@ -23,8 +24,11 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
         return  builder.show()
     }
 
-    fun trigger(position:Int){
+    override fun trigger(position:Int){
+        // TODO: remove tv and set title as name
         val mDialog = openDialogBox()
+        val tvAddingName = mDialogView.findViewById<TextView>(R.id.tvAddToCertainPerson)
+        tvAddingName.text = managerImpl.getCollector(position).name
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
@@ -48,10 +52,5 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
             holder.tvKg.text = managerImpl.getCollector(position).kilograms.toString()
             mDialog.dismiss()
         }
-    }
-    fun updateRecAdapter(recyclerView:RecyclerView){
-//        create new adapter with bigger Collectors lst
-        val adapter = RcAdapter(managerImpl,context)
-        recyclerView.adapter = adapter
     }
 }
