@@ -47,8 +47,7 @@ class Collectors(val manager: CollectorsManagerImpl) : Fragment() {
         floatingActionButton.setOnClickListener{
             val useCase = UseCaseAddCollectorImpl(manager,recyclerView,context)
             useCase.trigger()
-//            val adapter = RcAdapter(manager,context)
-//            recyclerView.adapter = adapter
+
         }
 
     }

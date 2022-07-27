@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
 import com.example.fruitmat.FeatureCollectors.DomainAndData.CollectorDto
@@ -32,7 +33,7 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
         holder.tvcages.text = managerImpl.getCollector(position).cages.toString()
         holder.tvKg.text = managerImpl.getCollector(position).kilograms.toString()
         holder.btnAdd.setOnClickListener {
-            val useCase = UseCaseAddCollectedImpl(managerImpl,context)
+            val useCase = UseCaseAddCollectedImpl(managerImpl,context,holder)
             useCase.trigger(position)
         }
     }
