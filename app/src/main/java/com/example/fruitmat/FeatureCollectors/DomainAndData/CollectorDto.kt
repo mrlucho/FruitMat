@@ -4,7 +4,7 @@ import com.example.fruitmat.common.constants.Consts.cageCapacity
 
 data class CollectorDto(val name: String,var cages:Int,var kilograms:Float){
     fun validate(){
-        if (kilograms > cageCapacity){
+        if (kilograms >= cageCapacity){
             val extraCages = kilograms.div(cageCapacity).toInt()
             kilograms -= extraCages * cageCapacity
             cages+=extraCages
