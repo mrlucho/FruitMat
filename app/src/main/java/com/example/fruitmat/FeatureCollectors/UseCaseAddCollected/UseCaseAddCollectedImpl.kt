@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.R
+import java.lang.Exception
 
 class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context: Context?,val holder:RcAdapter.ReviewHolder):UseCaseAddCollected {
     private lateinit var mDialogView: View
@@ -28,7 +29,21 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
         btn.setOnClickListener {
-            managerImpl.addHarvestedToCollector(position,cages.text.toString().toInt(),kg.text.toString().toFloat())
+            var numCages:Int
+            try {
+                numCages = cages.text.toString().toInt()
+            }
+            catch (e :Exception){
+                numCages = 0
+            }
+            var numKg:Float
+            try {
+                numKg = kg.text.toString().toFloat()
+            }
+            catch (e :Exception){
+                numKg = 0f
+            }
+            managerImpl.addHarvestedToCollector(position,numCages,numKg)
             holder.tvcages.text = managerImpl.getCollector(position).cages.toString()
             holder.tvKg.text = managerImpl.getCollector(position).kilograms.toString()
             mDialog.dismiss()
