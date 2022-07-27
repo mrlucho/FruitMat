@@ -26,6 +26,7 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorDto>) : Colle
         else{
             val payments = ArrayList<Int>()
 
+
         }
     }
 

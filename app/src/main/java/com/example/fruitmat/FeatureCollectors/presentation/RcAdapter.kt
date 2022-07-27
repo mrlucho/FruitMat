@@ -20,7 +20,6 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
         val tvname = itemview.findViewById<TextView>(R.id.tvHeading)
         val tvcages = itemview.findViewById<TextView>(R.id.tvCages)
         val tvKg = itemview.findViewById<TextView>(R.id.tvkg)
-        val btnAdd = itemview.findViewById<Button>(R.id.btnAddCollected)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewHolder {
@@ -29,13 +28,13 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
     }
 
     override fun onBindViewHolder(holder: ReviewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            UseCaseAddCollectedImpl(managerImpl,context,holder).trigger(position)
+        }
         holder.tvname.text = managerImpl.getCollector(position).name
         holder.tvcages.text = managerImpl.getCollector(position).cages.toString()
         holder.tvKg.text = managerImpl.getCollector(position).kilograms.toString()
-        holder.btnAdd.setOnClickListener {
-            val useCase = UseCaseAddCollectedImpl(managerImpl,context,holder)
-            useCase.trigger(position)
-        }
+
     }
 
     override fun getItemCount(): Int {
