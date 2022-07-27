@@ -2,13 +2,11 @@ package com.example.fruitmat.FeatureCollectors.UseCaseAddCollected
 
 import android.app.AlertDialog
 import android.content.Context
-import android.text.method.CharacterPickerDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.DomainAndData.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.R
