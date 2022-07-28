@@ -46,11 +46,14 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, va
             } catch (e :Exception){
                 0f
             }
-
-            managerImpl.addHarvestedToCollector(position,numCages,numKg)
-            holder.tvcages.text = managerImpl.getCollector(position).collectorDto.cages.toString()
-            holder.tvKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
-            mDialog.dismiss()
+            if(numCages != 0 || numKg != 0f) {
+                managerImpl.addHarvestedToCollector(position, numCages, numKg)
+                holder.tvcages.text =
+                    managerImpl.getCollector(position).collectorDto.cages.toString()
+                holder.tvKg.text =
+                    managerImpl.getCollector(position).collectorDto.kilograms.toString()
+                mDialog.dismiss()
+            }
         }
     }
 }
