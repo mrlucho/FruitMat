@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
@@ -29,7 +30,11 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, va
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
+        val actualCases = mDialogView.findViewById<TextView>(R.id.tvCurrentCages)
+        val actualKg = mDialogView.findViewById<TextView>(R.id.tvCurrentKg)
 
+        actualCases.text = managerImpl.getCollector(position).collectorDto.cages.toString()
+        actualKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
         val recyclerView = mDialogView.findViewById<RecyclerView>(R.id.recCollectorHistory)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = HistoryRecAdapter(managerImpl.getCollector(position).additionsHistoryLst)
