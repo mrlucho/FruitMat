@@ -1,4 +1,4 @@
-package com.example.fruitmat.FeatureCollectors.UseCaseAddCollected
+package com.example.fruitmat.FeatureCollectors.UseCaseDisplayCollectorData
 
 import android.app.AlertDialog
 import android.content.Context
@@ -14,7 +14,7 @@ import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.R
 import java.lang.Exception
 
-class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context: Context?,val holder:RcAdapter.ReviewHolder):UseCaseAddCollected {
+class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, val context: Context?, val holder:RcAdapter.ReviewHolder):UseCaseDisplayCollectorData {
     private lateinit var mDialogView: View
     override fun openDialogBox(position: Int):AlertDialog{
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collected,null)
@@ -25,15 +25,16 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
     }
 
     override fun trigger(position:Int){
-        // TODO: remove tv and set title as name
         val mDialog = openDialogBox(position)
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
+
         val recyclerView = mDialogView.findViewById<RecyclerView>(R.id.recCollectorHistory)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = HistoryRecAdapter(managerImpl.getCollector(position).additionsHistoryLst)
-        recyclerView.adapter = adapter
+        recyclerView.adapter = HistoryRecAdapter(managerImpl.getCollector(position).additionsHistoryLst)
+
+//        apply btn
         btn.setOnClickListener {
             val numCages:Int = try {
                 cages.text.toString().toInt()
@@ -45,6 +46,7 @@ class UseCaseAddCollectedImpl(val managerImpl: CollectorsManagerImpl,val context
             } catch (e :Exception){
                 0f
             }
+
             managerImpl.addHarvestedToCollector(position,numCages,numKg)
             holder.tvcages.text = managerImpl.getCollector(position).collectorDto.cages.toString()
             holder.tvKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()

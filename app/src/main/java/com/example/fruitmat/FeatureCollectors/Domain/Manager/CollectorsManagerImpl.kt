@@ -21,6 +21,9 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
     }
 
     override fun addHarvestedToCollector(position: Int, extraCages: Int, extraKg: Float) {
+        /**
+         * also updates worker history
+         */
         mColleectorsLst[position].collectorDto.add(extraCages,extraKg)
         mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(extraCages,extraKg))
     }

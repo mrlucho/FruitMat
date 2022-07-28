@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.UseCaseAddCollected.UseCaseAddCollectedImpl
+import com.example.fruitmat.FeatureCollectors.UseCaseDisplayCollectorData.UseCaseDisplayCollectorDataImpl
 
 class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Context?):RecyclerView.Adapter<RcAdapter.ReviewHolder>() {
 
@@ -25,7 +25,7 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
 
     override fun onBindViewHolder(holder: ReviewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            UseCaseAddCollectedImpl(managerImpl,context,holder).trigger(position)
+            UseCaseDisplayCollectorDataImpl(managerImpl,context,holder).trigger(position)
         }
         holder.tvname.text = managerImpl.getCollector(position).collectorDto.name
         holder.tvcages.text = managerImpl.getCollector(position).collectorDto.cages.toString()
