@@ -22,6 +22,7 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, va
         val builder = AlertDialog.Builder(context)
             .setView(mDialogView)
             .setTitle(managerImpl.getCollector(position).collectorDto.name)
+            .setCancelable(true)
         return  builder.show()
     }
 
@@ -32,6 +33,10 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, va
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
         val actualCases = mDialogView.findViewById<TextView>(R.id.tvCurrentCages)
         val actualKg = mDialogView.findViewById<TextView>(R.id.tvCurrentKg)
+        mDialogView.findViewById<Button>(R.id.btnClose).setOnClickListener {
+            mDialog.dismiss()
+        }
+
 
         actualCases.text = managerImpl.getCollector(position).collectorDto.cages.toString()
         actualKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
@@ -57,7 +62,6 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, va
                     managerImpl.getCollector(position).collectorDto.cages.toString()
                 holder.tvKg.text =
                     managerImpl.getCollector(position).collectorDto.kilograms.toString()
-                mDialog.dismiss()
             }
         }
     }

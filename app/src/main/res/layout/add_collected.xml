@@ -6,93 +6,149 @@
     android:layout_height="700dp">
 
 
-    <Button
-        android:id="@+id/btnApplyAdding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="apply"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCage1"
-        app:layout_constraintVertical_bias="0.214" />
-
-    <ImageView
-        android:id="@+id/imgCage1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/etGiveKg"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etGiveCages"
-        app:srcCompat="@drawable/fruits"
-        tools:layout_editor_absoluteY="150dp" />
-
-    <EditText
-        android:id="@+id/etGiveKg"
-        android:layout_width="58dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="kg"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/imgCage2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgCage1"
-        tools:layout_editor_absoluteY="157dp" />
-
-    <EditText
-        android:id="@+id/etGiveCages"
-        android:layout_width="102dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:hint="cages"
-        android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/imgCage1"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="157dp" />
-
     <ImageView
         android:id="@+id/imgCage2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etGiveKg"
-        app:srcCompat="@drawable/weight"
-        tools:layout_editor_absoluteY="150dp" />
+        app:layout_constraintStart_toEndOf="@+id/tvCurrentKg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/weight" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recCollectorHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnApplyAdding"
-        app:layout_constraintVertical_bias="0.241"
-        tools:layout_editor_absoluteX="0dp" />
+    <EditText
+        android:id="@+id/etGiveCages"
+        android:layout_width="71dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:hint="cages"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/imgCage3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentCages" />
 
-    <TextView
-        android:id="@+id/tvCurrentKg"
+    <ImageView
+        android:id="@+id/imgCage3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="example"
-        app:layout_constraintEnd_toStartOf="@+id/imgCage2"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/etGiveKg"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvCurrentCages"
-        app:layout_constraintTop_toBottomOf="@+id/etGiveKg" />
+        app:layout_constraintStart_toEndOf="@+id/etGiveCages"
+        app:layout_constraintTop_toBottomOf="@+id/imgCage1"
+        app:srcCompat="@drawable/fruits" />
 
     <TextView
         android:id="@+id/tvCurrentCages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:text="example"
-        app:layout_constraintEnd_toStartOf="@+id/tvCurrentKg"
+        app:layout_constraintEnd_toStartOf="@+id/imgCage1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etGiveCages" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnApplyAdding"
+        android:layout_width="65dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="44dp"
+        android:text="add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgCage4"
+        app:layout_constraintTop_toBottomOf="@+id/imgCage2" />
+
+    <ImageView
+        android:id="@+id/imgCage4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnApplyAdding"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/etGiveKg"
+        app:layout_constraintTop_toBottomOf="@+id/imgCage2"
+        app:srcCompat="@drawable/weight" />
+
+    <ImageView
+        android:id="@+id/imgCage1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvCurrentKg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvCurrentCages"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fruits" />
+
+    <EditText
+        android:id="@+id/etGiveKg"
+        android:layout_width="58dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="kg"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/imgCage4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgCage3"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentKg" />
+
+    <TextView
+        android:id="@+id/tvCurrentKg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="example"
+        app:layout_constraintEnd_toStartOf="@+id/imgCage2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgCage1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recCollectorHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPayOut"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/btnPayOut"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="52dp"
+        android:text="Pay out"
+        app:layout_constraintTop_toBottomOf="@+id/btnApplyAdding"
+        tools:layout_editor_absoluteX="188dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="166dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintEnd_toStartOf="@+id/btnPayOut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCage3" />
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="close window"
+        app:layout_constraintBottom_toTopOf="@+id/recCollectorHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPayOut" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
