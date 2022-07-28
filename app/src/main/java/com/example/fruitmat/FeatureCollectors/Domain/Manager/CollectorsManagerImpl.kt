@@ -1,5 +1,6 @@
 package com.example.fruitmat.FeatureCollectors.Domain.Manager
 
+import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
 import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
 import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
 import java.time.LocalDateTime
@@ -21,6 +22,7 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
 
     override fun addHarvestedToCollector(position: Int, extraCages: Int, extraKg: Float) {
         mColleectorsLst[position].collectorDto.add(extraCages,extraKg)
+        mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(extraCages,extraKg))
     }
 
     override fun payOut(indexLst: ArrayList<Int>) {

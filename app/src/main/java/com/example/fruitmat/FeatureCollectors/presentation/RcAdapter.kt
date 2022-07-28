@@ -12,15 +12,15 @@ import com.example.fruitmat.FeatureCollectors.UseCaseAddCollected.UseCaseAddColl
 
 class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Context?):RecyclerView.Adapter<RcAdapter.ReviewHolder>() {
 
-    class ReviewHolder(itemview:View):RecyclerView.ViewHolder(itemview){
-        val tvname = itemview.findViewById<TextView>(R.id.tvHeading)
-        val tvcages = itemview.findViewById<TextView>(R.id.tvCages)
-        val tvKg = itemview.findViewById<TextView>(R.id.tvkg)
+    class ReviewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
+        val tvname = itemView.findViewById<TextView>(R.id.tvHeading)
+        val tvcages = itemView.findViewById<TextView>(R.id.tvCages)
+        val tvKg = itemView.findViewById<TextView>(R.id.tvkg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewHolder {
-        val itemview = LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
-        return ReviewHolder(itemview)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
+        return ReviewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ReviewHolder, position: Int) {
