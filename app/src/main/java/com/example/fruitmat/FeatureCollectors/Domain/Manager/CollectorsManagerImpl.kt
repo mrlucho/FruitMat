@@ -28,15 +28,10 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
         mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(extraCages,extraKg))
     }
 
-    override fun payOut(indexLst: ArrayList<Int>) {
-        if (indexLst.isEmpty()){
-            throw Exception("passing empty list to payout method is forbidden")
-        }
-        else{
-            val payments = ArrayList<Int>()
+    override fun markPayedOut(position: Int) {
+//        mColleectorsLst[position]
 
 
-        }
     }
 
     override fun fillWithDummyData() {
