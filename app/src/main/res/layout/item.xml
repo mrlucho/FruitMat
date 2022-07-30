@@ -12,10 +12,11 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/weight"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgPay"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvkg"
-        tools:layout_editor_absoluteY="19dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgCage"
@@ -24,10 +25,11 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/fruits"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvkg"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvCages"
-        tools:layout_editor_absoluteY="19dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
     <TextView
@@ -38,10 +40,11 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvCages"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
         android:id="@+id/tvCages"
@@ -51,10 +54,11 @@
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imgCage"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvHeading"
-        tools:layout_editor_absoluteY="17dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
         android:id="@+id/tvkg"
@@ -64,10 +68,11 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imgCherry"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imgCage"
-        tools:layout_editor_absoluteY="25dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <View
         android:id="@+id/view"
@@ -81,13 +86,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgPay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imgCherry"
-        app:srcCompat="@drawable/cash_payment"
-        tools:layout_editor_absoluteY="25dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:srcCompat="@drawable/cash_payment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

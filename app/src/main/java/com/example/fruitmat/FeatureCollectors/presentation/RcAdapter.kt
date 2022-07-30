@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
@@ -16,6 +17,8 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
         val tvname = itemView.findViewById<TextView>(R.id.tvHeading)
         val tvcages = itemView.findViewById<TextView>(R.id.tvCages)
         val tvKg = itemView.findViewById<TextView>(R.id.tvkg)
+        val imgPay = itemView.findViewById<ImageView>(R.id.imgPay)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewHolder {
@@ -30,7 +33,12 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
         holder.tvname.text = managerImpl.getCollector(position).collectorDto.name
         holder.tvcages.text = managerImpl.getCollector(position).collectorDto.cages.toString()
         holder.tvKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
-
+        holder.imgPay.visibility = if(managerImpl.getCollector(position).paycheck != 0f){
+            View.VISIBLE
+        }
+        else{
+            View.INVISIBLE
+        }
     }
 
     override fun getItemCount(): Int {
