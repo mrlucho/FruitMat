@@ -1,4 +1,4 @@
-package com.example.fruitmat.FeatureCollectors.UseCaseDisplayCollectorData
+package com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorData.presentation
 
 import android.app.AlertDialog
 import android.content.Context
@@ -10,16 +10,23 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
+import com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorData.domain.UseCaseCollectorDataHelper
 import com.example.fruitmat.FeatureCollectors.presentation.HistoryRecAdapter
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.R
+import com.example.fruitmat.common.constants.Consts
+import com.example.fruitmat.common.constants.dailyConsts
 import java.lang.Exception
 
-class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, val context: Context?, val holder:RcAdapter.ReviewHolder):UseCaseDisplayCollectorData {
+class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
+                                      val context: Context?, val holder:RcAdapter.ReviewHolder)
+    : UseCaseDisplayCollectorData {
+
     private lateinit var mDialogView: View
-    lateinit var actualCases:TextView
-    lateinit var actualKg:TextView
+    private lateinit var actualCases:TextView
+    private lateinit var actualKg:TextView
 
     override fun openDialogBox(position: Int):AlertDialog{
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collected,null)
@@ -34,24 +41,26 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl, va
         actualKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
     }
 
+
     override fun trigger(position:Int){
         val mDialog = openDialogBox(position)
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
-         actualCases = mDialogView.findViewById<TextView>(R.id.tvCurrentCages)
-         actualKg = mDialogView.findViewById<TextView>(R.id.tvCurrentKg)
+        actualCases = mDialogView.findViewById<TextView>(R.id.tvCurrentCages)
+        actualKg = mDialogView.findViewById<TextView>(R.id.tvCurrentKg)
         mDialogView.findViewById<Button>(R.id.btnClose).setOnClickListener {
             mDialog.dismiss()
         }
 
-
-//        actualCases.text = managerImpl.getCollector(position).collectorDto.cages.toString()
-//        actualKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
         refreshCurrentHarvest(position)
         val recyclerView = mDialogView.findViewById<RecyclerView>(R.id.recCollectorHistory)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = HistoryRecAdapter(managerImpl.getCollector(position).additionsHistoryLst)
+
+        val payBtn = mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
+            val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
+            tvPayment.text = UseCaseCollectorDataHelper().paymentString(managerImpl.getCollector(position))        }
 
 //        apply btn
         btn.setOnClickListener {

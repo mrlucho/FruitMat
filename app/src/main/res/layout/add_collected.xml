@@ -123,21 +123,10 @@
         android:layout_height="45dp"
         android:layout_marginTop="52dp"
         android:text="Pay out"
-        app:layout_constraintTop_toBottomOf="@+id/btnApplyAdding"
-        tools:layout_editor_absoluteX="188dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="166dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintEnd_toStartOf="@+id/btnPayOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.984"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCage3" />
+        app:layout_constraintTop_toBottomOf="@+id/btnApplyAdding" />
 
     <Button
         android:id="@+id/btnClose"
@@ -149,6 +138,18 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPayOut" />
+
+    <TextView
+        android:id="@+id/tvPaymentString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/btnClose"
+        app:layout_constraintEnd_toStartOf="@+id/btnPayOut"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etGiveCages"
+        app:layout_constraintVertical_bias="0.626" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

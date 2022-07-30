@@ -1,4 +1,4 @@
-package com.example.fruitmat.FeatureCollectors.UseCaseAddCollector
+package com.example.fruitmat.FeatureCollectors.Domain.UseCaseAddCollector
 
 interface UseCaseAddCollector
 /**

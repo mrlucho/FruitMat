@@ -1,4 +1,4 @@
-package com.example.fruitmat.FeatureCollectors.UseCaseDisplayCollectorData
+package com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorData.presentation
 
 import android.app.AlertDialog
 

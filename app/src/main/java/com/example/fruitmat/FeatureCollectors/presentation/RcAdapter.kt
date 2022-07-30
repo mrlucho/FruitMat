@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.R
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.UseCaseDisplayCollectorData.UseCaseDisplayCollectorDataImpl
+import com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorData.presentation.UseCaseDisplayCollectorDataImpl
 
 class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Context?):RecyclerView.Adapter<RcAdapter.ReviewHolder>() {
 

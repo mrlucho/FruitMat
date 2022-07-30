@@ -7,6 +7,6 @@ import java.time.LocalDateTime
 data class CollectorWithHistory(val collectorDto: CollectorDto,
                                 val startTime: LocalDateTime,
                                 var endTime: LocalDateTime,
-                                val paycheck:Float,
+                                var paycheck:Float,
                                 var endOfWork:Boolean=false,
                                 var additionsHistoryLst :ArrayList<AdditionsHistory> = ArrayList())
