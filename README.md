@@ -7,4 +7,4 @@ Todo:
 
 
 Links to used icons from FlatIcon
-1. https://www.flaticon.com/free-icons/cash
+1. <a href="https://www.flaticon.com/free-icons/cash" title="cash icons">Cash icons created by Flat Icons - Flaticon</a>
