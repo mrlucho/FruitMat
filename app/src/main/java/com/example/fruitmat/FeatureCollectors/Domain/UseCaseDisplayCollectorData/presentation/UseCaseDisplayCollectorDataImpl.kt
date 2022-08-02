@@ -28,6 +28,8 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
     private lateinit var actualCases:TextView
     private lateinit var actualKg:TextView
 
+
+
     override fun openDialogBox(position: Int):AlertDialog{
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collected,null)
         val builder = AlertDialog.Builder(context)
@@ -60,7 +62,9 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
 
         val payBtn = mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
             val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
-            tvPayment.text = UseCaseCollectorDataHelper().paymentString(managerImpl.getCollector(position))        }
+            tvPayment.text = UseCaseCollectorDataHelper().paymentString(managerImpl.getCollector(position))
+//            UseCaseCollectorDataHelper().togglePaymentVisibility()
+        }
 
 //        apply btn
         btn.setOnClickListener {

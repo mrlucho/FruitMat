@@ -14,4 +14,5 @@ interface PayOutCollector {
         return "(${collectorWithHistory.collectorDto.cages * cageCapacity} + ${collectorWithHistory.collectorDto.kilograms}) * $workerPaymentForKg = ${pay(collectorWithHistory)}"
 
     }
+
 }
