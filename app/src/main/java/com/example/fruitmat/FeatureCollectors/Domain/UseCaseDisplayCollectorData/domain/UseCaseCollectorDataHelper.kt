@@ -17,8 +17,8 @@ class UseCaseCollectorDataHelper {
         return "(${collectorWithHistory.collectorDto.cages * Consts.cageCapacity} + ${collectorWithHistory.collectorDto.kilograms}) * ${dailyConsts.workerPaymentForKg} = ${pay(collectorWithHistory)}"
 
     }
-    fun togglePaymentVisibility(holder: RcAdapter.ReviewHolder,managerImpl:CollectorsManagerImpl,position:Int){
-        holder.imgPay.visibility = if(managerImpl.getCollector(position).paycheck != 0f){
+    fun togglePaymentVisibility(managerImpl:CollectorsManagerImpl,position:Int): Int {
+        return if(managerImpl.getCollector(position).paycheck != 0f){
             View.VISIBLE
         }
         else{

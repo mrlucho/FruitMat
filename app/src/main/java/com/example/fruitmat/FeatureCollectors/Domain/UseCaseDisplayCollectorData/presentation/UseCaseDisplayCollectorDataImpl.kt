@@ -63,7 +63,7 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
         val payBtn = mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
             val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
             tvPayment.text = UseCaseCollectorDataHelper().paymentString(managerImpl.getCollector(position))
-//            UseCaseCollectorDataHelper().togglePaymentVisibility()
+            holder.imgPay.visibility = UseCaseCollectorDataHelper().togglePaymentVisibility(managerImpl, position)
         }
 
 //        apply btn

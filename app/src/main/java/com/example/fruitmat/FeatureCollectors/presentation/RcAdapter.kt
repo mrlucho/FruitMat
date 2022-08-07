@@ -28,20 +28,20 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
         return ReviewHolder(itemView)
     }
 
+
     override fun onBindViewHolder(holder: ReviewHolder, position: Int) {
         holder.itemView.setOnClickListener {
             UseCaseDisplayCollectorDataImpl(managerImpl,context,holder).trigger(position)
-//            UseCaseCollectorDataHelper().togglePaymentVisibility(holder,managerImpl,position)
+            println("end of use case")
+            holder.imgPay.visibility = UseCaseCollectorDataHelper().togglePaymentVisibility(managerImpl,position)
 
         }
+        holder.imgPay.visibility = UseCaseCollectorDataHelper().togglePaymentVisibility(managerImpl,position)
         holder.tvname.text = managerImpl.getCollector(position).collectorDto.name
         holder.tvcages.text = managerImpl.getCollector(position).collectorDto.cages.toString()
         holder.tvKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
-        UseCaseCollectorDataHelper().togglePaymentVisibility(holder,managerImpl,position)
+//         Todo: UseCaseCollectorDataHelper().togglePaymentVisibility(holder,managerImpl,position)
     }
-//    fun updatePayment(position: Int){
-//        UseCaseCollectorDataHelper().togglePaymentVisibility(holder,managerImpl,position)
-//    }
 
     override fun getItemCount(): Int {
         return managerImpl.getCollectorsAsArrayList().size
