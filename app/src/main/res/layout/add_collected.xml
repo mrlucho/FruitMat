@@ -114,7 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPayOut"
+        app:layout_constraintTop_toBottomOf="@+id/btnClose"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
@@ -132,10 +132,10 @@
         android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginEnd="130dp"
         android:text="close window"
-        app:layout_constraintBottom_toTopOf="@+id/recCollectorHistory"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPayOut" />
 
@@ -150,6 +150,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etGiveCages"
         app:layout_constraintVertical_bias="0.626" />
+
+    <TextView
+        android:id="@+id/tvstartEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/etGiveCages"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentCages"
+        tools:layout_editor_absoluteX="25dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

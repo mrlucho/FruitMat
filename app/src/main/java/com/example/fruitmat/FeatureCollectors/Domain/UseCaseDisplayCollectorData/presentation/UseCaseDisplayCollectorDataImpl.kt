@@ -49,6 +49,7 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
         val btn = mDialogView.findViewById<Button>(R.id.btnApplyAdding)
+        val tvTime = mDialogView.findViewById<TextView>(R.id.tvstartEndTime)
         actualCases = mDialogView.findViewById<TextView>(R.id.tvCurrentCages)
         actualKg = mDialogView.findViewById<TextView>(R.id.tvCurrentKg)
         mDialogView.findViewById<Button>(R.id.btnClose).setOnClickListener {
@@ -60,35 +61,50 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = HistoryRecAdapter(managerImpl.getCollector(position).additionsHistoryLst)
 
-        val payBtn = mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
-            val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
-            tvPayment.text = UseCaseCollectorDataHelper().paymentString(managerImpl.getCollector(position))
-            holder.imgPay.visibility = UseCaseCollectorDataHelper().togglePaymentVisibility(managerImpl, position)
-        }
+        if(managerImpl.getCollector(position).paycheck == 0f) {
+            tvTime.text = managerImpl.getCollector(position).startTime.toString()
+            val payBtn = mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
+                tvTime.text = "start: ${managerImpl.getCollector(position).startTime.toString()}\n end: ${managerImpl.getCollector(position).endTime.toString()}"
+                val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
+                tvPayment.text =
+                    UseCaseCollectorDataHelper().paymentString(managerImpl.getCollector(position))
+                holder.imgPay.visibility =
+                    UseCaseCollectorDataHelper().togglePaymentVisibility(managerImpl, position)
+            }
 
 //        apply btn
-        btn.setOnClickListener {
-            val numCages:Int = try {
-                cages.text.toString().toInt()
-            } catch (e :Exception){
-                0
+            btn.setOnClickListener {
+                val numCages: Int = try {
+                    cages.text.toString().toInt()
+                } catch (e: Exception) {
+                    0
+                }
+                val numKg: Float = try {
+                    kg.text.toString().toFloat()
+                } catch (e: Exception) {
+                    0f
+                }
+                if (numCages != 0 || numKg != 0f) {
+                    Toast.makeText(
+                        context,
+                        "added $numCages cages and $numKg kg",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    managerImpl.addHarvestedToCollector(position, numCages, numKg)
+                    holder.tvcages.text =
+                        managerImpl.getCollector(position).collectorDto.cages.toString()
+                    holder.tvKg.text =
+                        managerImpl.getCollector(position).collectorDto.kilograms.toString()
+                    cages.setText("")
+                    kg.setText("")
+                    refreshCurrentHarvest(position)
+                }
             }
-            val numKg:Float = try {
-                kg.text.toString().toFloat()
-            } catch (e :Exception){
-                0f
-            }
-            if(numCages != 0 || numKg != 0f) {
-                Toast.makeText(context,"added $numCages cages and $numKg kg",Toast.LENGTH_SHORT).show()
-                managerImpl.addHarvestedToCollector(position, numCages, numKg)
-                holder.tvcages.text =
-                    managerImpl.getCollector(position).collectorDto.cages.toString()
-                holder.tvKg.text =
-                    managerImpl.getCollector(position).collectorDto.kilograms.toString()
-                cages.setText("")
-                kg.setText("")
-                refreshCurrentHarvest(position)
-            }
+        }
+        else{
+            tvTime.text = "start: ${managerImpl.getCollector(position).startTime.toString()}\n end: ${managerImpl.getCollector(position).endTime.toString()}"
+            val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
+            tvPayment.text = managerImpl.getCollector(position).paycheck.toString()
         }
     }
 }

@@ -6,11 +6,13 @@ import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerIm
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.common.constants.Consts
 import com.example.fruitmat.common.constants.dailyConsts
+import java.time.LocalDateTime
 
 class UseCaseCollectorDataHelper {
     fun pay(collectorWithHistory: CollectorWithHistory):Float{
         val  pay = (collectorWithHistory.collectorDto.cages * Consts.cageCapacity + collectorWithHistory.collectorDto.kilograms )* dailyConsts.workerPaymentForKg
         collectorWithHistory.paycheck = pay
+        collectorWithHistory.endTime= LocalDateTime.now()
         return pay
     }
     fun paymentString(collectorWithHistory: CollectorWithHistory):String{
