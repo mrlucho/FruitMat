@@ -45,6 +45,7 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
 
 
     override fun trigger(position:Int){
+        val currentWorker = managerImpl.getCollector(position)
         val mDialog = openDialogBox(position)
         val cages = mDialogView.findViewById<EditText>(R.id.etGiveCages)
         val kg = mDialogView.findViewById<EditText>(R.id.etGiveKg)
@@ -59,15 +60,16 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
         refreshCurrentHarvest(position)
         val recyclerView = mDialogView.findViewById<RecyclerView>(R.id.recCollectorHistory)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = HistoryRecAdapter(managerImpl.getCollector(position).additionsHistoryLst)
+        recyclerView.adapter = HistoryRecAdapter(currentWorker.additionsHistoryLst)
 
-        if(managerImpl.getCollector(position).paycheck == 0f) {
-            tvTime.text = managerImpl.getCollector(position).startTime.toString()
+        if(currentWorker.paycheck == 0f) {
+            tvTime.text = "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}"
+
             val payBtn = mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
-                tvTime.text = "start: ${managerImpl.getCollector(position).startTime.toString()}\n end: ${managerImpl.getCollector(position).endTime.toString()}"
+                tvTime.text = "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}\n end: ${currentWorker.endTime.hour}:${currentWorker.endTime.minute}"
                 val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
                 tvPayment.text =
-                    UseCaseCollectorDataHelper().paymentString(managerImpl.getCollector(position))
+                    UseCaseCollectorDataHelper().paymentString(currentWorker)
                 holder.imgPay.visibility =
                     UseCaseCollectorDataHelper().togglePaymentVisibility(managerImpl, position)
             }
@@ -92,9 +94,9 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
                     ).show()
                     managerImpl.addHarvestedToCollector(position, numCages, numKg)
                     holder.tvcages.text =
-                        managerImpl.getCollector(position).collectorDto.cages.toString()
+                        currentWorker.collectorDto.cages.toString()
                     holder.tvKg.text =
-                        managerImpl.getCollector(position).collectorDto.kilograms.toString()
+                        currentWorker.collectorDto.kilograms.toString()
                     cages.setText("")
                     kg.setText("")
                     refreshCurrentHarvest(position)
@@ -102,7 +104,7 @@ class UseCaseDisplayCollectorDataImpl(val managerImpl: CollectorsManagerImpl,
             }
         }
         else{
-            tvTime.text = "start: ${managerImpl.getCollector(position).startTime.toString()}\n end: ${managerImpl.getCollector(position).endTime.toString()}"
+            tvTime.text = "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}\n end: ${currentWorker.endTime.hour}:${currentWorker.endTime.minute}"
             val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
             tvPayment.text = managerImpl.getCollector(position).paycheck.toString()
         }
