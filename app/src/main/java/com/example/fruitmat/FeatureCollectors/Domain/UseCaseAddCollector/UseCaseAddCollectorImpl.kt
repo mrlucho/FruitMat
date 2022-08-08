@@ -42,7 +42,6 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
             if (txt != ""){
                 mDialog.dismiss()
                 managerImpl.addCollector(txt)
-
                 updateRecAdapter()
             }
             else{

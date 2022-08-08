@@ -8,7 +8,6 @@ interface CollectorsManager {
     fun getCollector(position:Int): CollectorWithHistory
     fun addCollector(name: String)
     fun addHarvestedToCollector(position: Int,extraCages:Int,extraKg:Float)
-    fun markPayedOut(position: Int)
     fun fillWithDummyData()
 //    fun clearAllResources():Void
 //    fun generateActionReport() for logging user activity

@@ -55,7 +55,7 @@ class Collectors(val manager: CollectorsManagerImpl) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_collectors, container, false)
     }
 
     companion object {

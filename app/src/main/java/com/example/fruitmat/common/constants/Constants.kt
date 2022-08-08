@@ -1,5 +1,5 @@
 package com.example.fruitmat.common.constants
 
-object Consts {
+object Constants {
     const val cageCapacity = 5
 }

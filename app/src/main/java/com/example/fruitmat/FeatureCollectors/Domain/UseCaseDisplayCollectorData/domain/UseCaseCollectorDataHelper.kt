@@ -3,24 +3,24 @@ package com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorDat
 import android.view.View
 import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
-import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
-import com.example.fruitmat.common.constants.Consts
+import com.example.fruitmat.common.constants.Constants
 import com.example.fruitmat.common.constants.dailyConsts
 import java.time.LocalDateTime
 
-class UseCaseCollectorDataHelper {
-    fun pay(collectorWithHistory: CollectorWithHistory):Float{
-        val  pay = (collectorWithHistory.collectorDto.cages * Consts.cageCapacity + collectorWithHistory.collectorDto.kilograms )* dailyConsts.workerPaymentForKg
+class UseCaseCollectorDataHelper:PayOutCollector {
+    override fun payAndMarkColPayed(collectorWithHistory: CollectorWithHistory):Float{
+//
+        val  pay = (collectorWithHistory.collectorDto.cages * Constants.cageCapacity + collectorWithHistory.collectorDto.kilograms )* dailyConsts.workerPaymentForKg
         collectorWithHistory.paycheck = pay
         collectorWithHistory.endTime= LocalDateTime.now()
         return pay
     }
-    fun paymentString(collectorWithHistory: CollectorWithHistory):String{
-        return "(${collectorWithHistory.collectorDto.cages * Consts.cageCapacity} + ${collectorWithHistory.collectorDto.kilograms}) * ${dailyConsts.workerPaymentForKg} = ${pay(collectorWithHistory)}"
+    override fun paymentString(collectorWithHistory: CollectorWithHistory):String{
+        return "(${collectorWithHistory.collectorDto.cages * Constants.cageCapacity} + ${collectorWithHistory.collectorDto.kilograms}) * ${dailyConsts.workerPaymentForKg} = ${payAndMarkColPayed(collectorWithHistory)}"
 
     }
-    fun togglePaymentVisibility(managerImpl:CollectorsManagerImpl,position:Int): Int {
-        return if(managerImpl.getCollector(position).paycheck != 0f){
+    override fun togglePaymentVisibility(collectorWithHistory: CollectorWithHistory): Int {
+        return if(collectorWithHistory.paycheck != 0f){
             View.VISIBLE
         }
         else{

@@ -28,12 +28,6 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
         mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(extraCages,extraKg))
     }
 
-    override fun markPayedOut(position: Int) {
-//        mColleectorsLst[position]
-
-
-    }
-
     override fun fillWithDummyData() {
         addCollector("someone")
         addCollector("someoneOther")
