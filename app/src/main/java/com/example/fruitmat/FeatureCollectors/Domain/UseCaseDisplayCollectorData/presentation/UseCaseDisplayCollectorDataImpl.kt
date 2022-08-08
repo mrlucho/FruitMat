@@ -59,7 +59,7 @@ class UseCaseDisplayCollectorDataImpl(
         val recyclerView = mDialogView.findViewById<RecyclerView>(R.id.recCollectorHistory)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        recyclerView.adapter = HistoryRecAdapter(currentWorker.additionsHistoryLst)
+        recyclerView.adapter = HistoryRecAdapter(currentWorker.additionsHistoryLst.reversed())
         tvTime.text = "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}"
 
         mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {

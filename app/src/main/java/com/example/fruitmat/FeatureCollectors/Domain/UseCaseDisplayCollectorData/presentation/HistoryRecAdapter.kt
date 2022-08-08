@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
 import com.example.fruitmat.R
 
-class HistoryRecAdapter(val histEvents:ArrayList<AdditionsHistory>)
+class HistoryRecAdapter(val histEvents:List<AdditionsHistory>)
     :RecyclerView.Adapter<HistoryRecAdapter.HistoryViewHolder>(){
 //    it gets already reversed lst from fragment code
 
