@@ -17,6 +17,18 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
     : UseCaseAddCollector {
     private lateinit var mDialogView:View
 
+    fun nameIsValid(name:String):Boolean{
+        if (name == ""){
+            return false
+        }
+        for (collector in managerImpl.getCollectorsAsArrayList()){
+            if (collector.collectorDto.name == name){
+                return false
+            }
+        }
+        return true
+    }
+
     override fun updateRecAdapter(){
 //        create new adapter with bigger Collectors lst
         val adapter = RcAdapter(managerImpl,context)
@@ -24,7 +36,6 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
     }
     override fun popDialogView() {
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collector_dialog,null)
-
     }
     override fun trigger(){
         popDialogView()
@@ -39,14 +50,14 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
 
         submitBtn.setOnClickListener {
             val txt = editText.text.toString()
-            if (txt != ""){
+            if (nameIsValid(txt)){
                 mDialog.dismiss()
                 managerImpl.addCollector(txt)
                 updateRecAdapter()
             }
             else{
                 Toast.makeText(context,
-                    "Collector must have a name",Toast.LENGTH_SHORT).show()
+                    "invalid name",Toast.LENGTH_SHORT).show()
             }
 
         }
