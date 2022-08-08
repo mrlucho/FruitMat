@@ -1,4 +1,4 @@
-package com.example.fruitmat.FeatureCollectors.presentation
+package com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorData.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import com.example.fruitmat.R
 
 class HistoryRecAdapter(val histEvents:ArrayList<AdditionsHistory>)
     :RecyclerView.Adapter<HistoryRecAdapter.HistoryViewHolder>(){
+//    it gets already reversed lst from fragment code
 
     class HistoryViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val tvCages = itemView.findViewById<TextView>(R.id.tvCagesHist)

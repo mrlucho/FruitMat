@@ -10,9 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorData.domain.UseCaseCollectorDataHelper
-import com.example.fruitmat.FeatureCollectors.presentation.HistoryRecAdapter
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter
 import com.example.fruitmat.R
 import java.lang.Exception
@@ -58,55 +58,53 @@ class UseCaseDisplayCollectorDataImpl(
         refreshCurrentHarvest(position)
         val recyclerView = mDialogView.findViewById<RecyclerView>(R.id.recCollectorHistory)
         recyclerView.layoutManager = LinearLayoutManager(context)
+
         recyclerView.adapter = HistoryRecAdapter(currentWorker.additionsHistoryLst)
+        tvTime.text = "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}"
 
-
-            tvTime.text = "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}"
-
-            mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
+        mDialogView.findViewById<Button>(R.id.btnPayOut).setOnClickListener {
 //                pay btn
-                if (currentWorker.paycheck == 0f) {
-                    tvTime.text =
-                        "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}\n end: ${currentWorker.endTime.hour}:${currentWorker.endTime.minute}"
-                    val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
-                    tvPayment.text =
-                        UseCaseCollectorDataHelper().paymentString(currentWorker)
-                    holder.imgPay.visibility =
-                        UseCaseCollectorDataHelper().togglePaymentVisibility(currentWorker)
+            if (currentWorker.paycheck == 0f) {
+                tvTime.text =
+                    "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}\n end: ${currentWorker.endTime.hour}:${currentWorker.endTime.minute}"
+                val tvPayment = mDialogView.findViewById<TextView>(R.id.tvPaymentString)
+                tvPayment.text =
+                    UseCaseCollectorDataHelper().paymentString(currentWorker)
+                holder.imgPay.visibility =
+                    UseCaseCollectorDataHelper().togglePaymentVisibility(currentWorker)
                 }
             }
 
 //        apply btn
-            btn.setOnClickListener {
-                if (currentWorker.paycheck == 0f) {
-                    val numCages: Int = try {
-                        cages.text.toString().toInt()
-                    } catch (e: Exception) {
-                        0
-                    }
-                    val numKg: Float = try {
-                        kg.text.toString().toFloat()
-                    } catch (e: Exception) {
-                        0f
-                    }
-                    if (numCages != 0 || numKg != 0f) {
-                        Toast.makeText(
-                            context,
-                            "added $numCages cages and $numKg kg",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        managerImpl.addHarvestedToCollector(position, numCages, numKg)
-                        holder.tvcages.text =
-                            currentWorker.collectorDto.cages.toString()
-                        holder.tvKg.text =
-                            currentWorker.collectorDto.kilograms.toString()
-                        cages.setText("")
-                        kg.setText("")
-                        refreshCurrentHarvest(position)
-                    }
+        btn.setOnClickListener {
+            if (currentWorker.paycheck == 0f) {
+                val numCages: Int = try {
+                    cages.text.toString().toInt()
+                } catch (e: Exception) {
+                    0
+                }
+                val numKg: Float = try {
+                    kg.text.toString().toFloat()
+                } catch (e: Exception) {
+                    0f
+                }
+                if (numCages != 0 || numKg != 0f) {
+                    Toast.makeText(
+                        context,
+                        "added $numCages cages and $numKg kg",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    managerImpl.addHarvestedToCollector(position, numCages, numKg)
+                    holder.tvcages.text =
+                        currentWorker.collectorDto.cages.toString()
+                    holder.tvKg.text =
+                        currentWorker.collectorDto.kilograms.toString()
+                    cages.setText("")
+                    kg.setText("")
+                    refreshCurrentHarvest(position)
                 }
             }
-
+        }
         if (currentWorker.paycheck != 0f) {
             tvTime.text =
                 "start ${currentWorker.startTime.hour}:${currentWorker.startTime.minute}\n end: ${currentWorker.endTime.hour}:${currentWorker.endTime.minute}"
