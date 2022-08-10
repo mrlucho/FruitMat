@@ -8,7 +8,7 @@ import com.example.fruitmat.FeatureCollectors.presentation.Collectors
 import com.example.fruitmat.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    var manager = CollectorsManagerImpl(ArrayList())
+    val manager = CollectorsManagerImpl(ArrayList())
     private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
