@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "56500367198",
+    "project_id": "fruitmat-2610d",
+    "storage_bucket": "fruitmat-2610d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56500367198:android:d3498c5e89df8b744ba9cf",
+        "android_client_info": {
+          "package_name": "com.example.fruitmat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "56500367198-40rub402oj565p9fj1euejpa3ac657br.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_lcU7GH749x4o2wjMKadhMKJiFv0UvJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "56500367198-40rub402oj565p9fj1euejpa3ac657br.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
