@@ -2,17 +2,7 @@ package com.example.fruitmat.FeatureCollectors.Data
 
 import com.example.fruitmat.common.constants.Constants.cageCapacity
 
-data class CollectorDto(val name: String,var cages:Int,var kilograms:Float){
-    fun validate(){
-        if (kilograms >= cageCapacity){
-            val extraCages = kilograms.div(cageCapacity).toInt()
-            kilograms -= extraCages * cageCapacity
-            cages+=extraCages
-        }
-    }
-    fun add(fullCages:Int,kilos:Float){
-        cages += fullCages
-        kilograms += kilos
-        validate()
-    }
+data class CollectorDto(val name: String,
+                        var cages:Int,
+                        var kilograms:Float){
 }

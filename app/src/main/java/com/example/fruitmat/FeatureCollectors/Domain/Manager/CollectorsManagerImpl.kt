@@ -3,6 +3,7 @@ package com.example.fruitmat.FeatureCollectors.Domain.Manager
 import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
 import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
 import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
+import com.example.fruitmat.common.constants.Constants
 import java.time.LocalDateTime
 
 class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>) : CollectorsManager {
@@ -24,8 +25,23 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
         /**
          * also updates worker history
          */
-        mColleectorsLst[position].collectorDto.add(extraCages,extraKg)
+//        mColleectorsLst[position].collectorDto.add(extraCages,extraKg)
         mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(extraCages,extraKg))
+        add(mColleectorsLst[position].collectorDto,extraCages,extraKg)
+        validate(mColleectorsLst[position].collectorDto)
+
+    }
+    private fun validate(collectorDto: CollectorDto){
+        if (collectorDto.kilograms >= Constants.cageCapacity){
+            val extraCages = collectorDto.kilograms.div(Constants.cageCapacity).toInt()
+            collectorDto.kilograms -= extraCages * Constants.cageCapacity
+            collectorDto.cages+=extraCages
+        }
+    }
+    private fun add(collectorDto: CollectorDto, fullCages:Int, kilos:Float){
+        collectorDto.cages += fullCages
+        collectorDto.kilograms += kilos
+        validate(collectorDto)
     }
 
     override fun fillWithDummyData() {
