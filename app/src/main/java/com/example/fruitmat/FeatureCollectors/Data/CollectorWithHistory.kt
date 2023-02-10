@@ -1,10 +1,11 @@
 package com.example.fruitmat.FeatureCollectors.Data
 
 import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
-import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
 import java.time.LocalDateTime
 
-data class CollectorWithHistory(val collectorDto: CollectorDto,
+data class CollectorWithHistory(val name:String,
+                                var cages:Int,
+                                var kg:Float,
                                 val startTime: LocalDateTime,
                                 var endTime: LocalDateTime,
                                 var paycheck:Float,
