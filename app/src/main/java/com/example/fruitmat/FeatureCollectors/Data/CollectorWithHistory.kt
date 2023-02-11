@@ -1,8 +1,7 @@
 package com.example.fruitmat.FeatureCollectors.Data
 
-import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
+import com.example.fruitmat.FeatureCollectors.Data.database.entities.AdditionsHistory
 import java.time.LocalDateTime
-
 data class CollectorWithHistory(val name:String,
                                 var cages:Int,
                                 var kg:Float,

@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.Domain.UseCaseDisplayCollectorData.domain.UseCaseCollectorDataHelper
 import com.example.fruitmat.FeatureCollectors.presentation.RcAdapter

@@ -1,6 +1,6 @@
 package com.example.fruitmat.FeatureCollectors.Domain.Manager
 
-import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
+import com.example.fruitmat.FeatureCollectors.Data.database.entities.AdditionsHistory
 import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
 import com.example.fruitmat.common.constants.Constants
 import java.time.LocalDateTime
@@ -25,7 +25,7 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
          * also updates worker history
          */
 //        mColleectorsLst[position].collectorDto.add(extraCages,extraKg)
-        mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(extraCages,extraKg))
+        mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(1,extraCages,extraKg,"fixme"))
         add(mColleectorsLst[position],extraCages,extraKg)
 //        validate(mColleectorsLst[position]) //already should be validated
 

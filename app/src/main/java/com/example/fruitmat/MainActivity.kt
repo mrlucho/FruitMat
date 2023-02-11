@@ -3,9 +3,14 @@ package com.example.fruitmat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.fruitmat.FeatureCollectors.Data.database.entities.CollectorToDB
+//import com.example.fruitmat.FeatureCollectors.Data.database.entities.CollectorWithoutHistory
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
 import com.example.fruitmat.FeatureCollectors.presentation.Collectors
 import com.example.fruitmat.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 class MainActivity : AppCompatActivity() {
     val manager = CollectorsManagerImpl(ArrayList())
@@ -30,6 +35,20 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+
+        val dao = CollectorsDatabase.getInstance(this).collectorDao
+        lifecycleScope.launch{
+            dao.insertCollector(
+                CollectorToDB(1,"jan",0,0f,
+                LocalDateTime.now().toString(),
+                LocalDateTime.now().toString(),0f,true)
+            )
+//            dao.insertCollector(
+//                CollectorToDB("Michal",0,0f,
+//                LocalDateTime.now().toString(),
+//                LocalDateTime.now().toString(),0f)
+//            )
         }
     }
 

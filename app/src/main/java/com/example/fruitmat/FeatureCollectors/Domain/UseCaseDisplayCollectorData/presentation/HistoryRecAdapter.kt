@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
+import com.example.fruitmat.FeatureCollectors.Data.database.entities.AdditionsHistory
 import com.example.fruitmat.R
 
 class HistoryRecAdapter(val histEvents:List<AdditionsHistory>)
