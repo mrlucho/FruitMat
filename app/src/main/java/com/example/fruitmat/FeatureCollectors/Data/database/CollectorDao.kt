@@ -4,7 +4,7 @@ import androidx.room.*
 import com.example.fruitmat.FeatureCollectors.Data.database.entities.AdditionsHistory
 import com.example.fruitmat.FeatureCollectors.Data.database.entities.CollectorToDB
 //import com.example.fruitmat.FeatureCollectors.Data.database.entities.com.example.fruitmat.FeatureCollectors.Data.database.CollectorWithoutHistory
-import com.example.fruitmat.FeatureCollectors.Data.database.entities.relations.CollectorAndAdditions
+import com.example.fruitmat.FeatureCollectors.Data.database.entities.relations.CollectorWithHistoryDTO
 
 @Dao
 abstract interface CollectorDao {
@@ -20,5 +20,5 @@ abstract interface CollectorDao {
 
     @Transaction
     @Query("SELECT * FROM CollectorToDB WHERE name = :name")
-    suspend fun getCollector(name: String) :List<CollectorAndAdditions>
+    suspend fun getCollector(name: String) :List<CollectorWithHistoryDTO>
 }

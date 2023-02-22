@@ -5,7 +5,7 @@ import androidx.room.Relation
 import com.example.fruitmat.FeatureCollectors.Data.database.entities.AdditionsHistory
 import com.example.fruitmat.FeatureCollectors.Data.database.entities.CollectorToDB
 
-data class CollectorAndAdditions(
+data class CollectorWithHistoryDTO(
     @Embedded val collector : CollectorToDB,
     @Relation(
         parentColumn = "name",
