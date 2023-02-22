@@ -7,7 +7,7 @@ import com.example.fruitmat.FeatureCollectors.Data.database.entities.CollectorTo
 import com.example.fruitmat.FeatureCollectors.Data.database.entities.relations.CollectorAndAdditions
 
 @Dao
-interface CollectorDao {
+abstract interface CollectorDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHistory(additionsHistory: AdditionsHistory)
 

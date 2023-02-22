@@ -15,19 +15,20 @@ import java.time.LocalDateTime
 class MainActivity : AppCompatActivity() {
     val manager = CollectorsManagerImpl(ArrayList())
     private lateinit var binding : ActivityMainBinding
+    private var name:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(Home())
+        replaceFragment(Home(name))
 
 
         binding.bottomNavigationView.setOnItemSelectedListener {
 
             when(it.itemId){
 
-                R.id.home -> replaceFragment(Home())
+                R.id.home -> replaceFragment(Home(name))
                 R.id.profile -> replaceFragment(Collectors(manager))
                 R.id.settings -> replaceFragment(Settings())
 
@@ -41,14 +42,16 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch{
             dao.insertCollector(
                 CollectorToDB(1,"jan",0,0f,
-                LocalDateTime.now().toString(),
-                LocalDateTime.now().toString(),0f,true)
+                "LocalDateTime.now().toString()",
+                "LocalDateTime.now().toString()",0f,true)
             )
 //            dao.insertCollector(
 //                CollectorToDB("Michal",0,0f,
 //                LocalDateTime.now().toString(),
 //                LocalDateTime.now().toString(),0f)
 //            )
+            name = dao.getAllCollectors()[0].name
+
         }
     }
 

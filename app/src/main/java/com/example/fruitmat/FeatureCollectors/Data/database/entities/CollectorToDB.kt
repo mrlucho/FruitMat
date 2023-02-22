@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 @Entity
 data class CollectorToDB(
-@PrimaryKey(autoGenerate = false)
+@PrimaryKey(autoGenerate = true)
 val id:Int,
 val name:String,
 

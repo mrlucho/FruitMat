@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "da8f311f472fc4ee9c9669e85d24827e",
+    "identityHash": "ca2f9e7085917f45da6ad413e96c2f54",
     "entities": [
       {
         "tableName": "CollectorToDB",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `cages` INTEGER NOT NULL, `kg` REAL NOT NULL, `startTime` TEXT NOT NULL, `endTime` TEXT NOT NULL, `paycheck` REAL NOT NULL, `endOfWork` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `cages` INTEGER NOT NULL, `kg` REAL NOT NULL, `startTime` TEXT NOT NULL, `endTime` TEXT NOT NULL, `paycheck` REAL NOT NULL, `endOfWork` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -61,7 +61,7 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -108,7 +108,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'da8f311f472fc4ee9c9669e85d24827e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ca2f9e7085917f45da6ad413e96c2f54')"
     ]
   }
 }
